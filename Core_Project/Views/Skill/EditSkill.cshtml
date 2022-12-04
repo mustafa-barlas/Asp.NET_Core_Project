@@ -1,0 +1,29 @@
+﻿@model EntityLayer.Concrete.Skill
+@{
+    ViewData["Title"] = "EditSkill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yetenek Güncelleme</h1>
+@using (Html.BeginForm("EditSkill", "Skill", FormMethod.Post))
+{
+
+    <br />
+    <br />
+    <br />
+    <div class="card-header border-0">
+        <h3 class="mb-0">Yetenek Güncelleme Tablosu</h3>
+    </div>
+    <br />
+    @Html.HiddenFor(x => x.SkillID)
+    <br />
+    @Html.Label("Yetenek")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" , placeholder="Yetenek Giriniz" })
+    <br />
+    @Html.Label("Değer")
+    @Html.TextBoxFor(x => x.Value , new { @class = "form-control", placeholder="Değer Giriniz"})
+    <br />
+    <button class="btn btn-dark">Güncelle</button>
+
+}
+
