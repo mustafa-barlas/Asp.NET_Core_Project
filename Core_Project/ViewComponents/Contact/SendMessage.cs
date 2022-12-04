@@ -15,7 +15,6 @@ namespace Core_Project.ViewComponents.Contact
         {
             return View();
         }
-
         [HttpPost]
         public IViewComponentResult Invokea(Message p)
         {
