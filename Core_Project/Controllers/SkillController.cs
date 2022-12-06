@@ -32,7 +32,6 @@ namespace Core_Project.Controllers
         {
 
             skillManager.Tadd(skill);
-
             return RedirectToAction("Index");
         }
         public IActionResult DeleteSkill(int id)
