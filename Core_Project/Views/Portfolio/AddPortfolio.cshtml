@@ -1,0 +1,41 @@
+﻿@model EntityLayer.Concrete.Portfolio
+@{
+    ViewData["Title"] = "AddPortfolio";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="card-header border-0">
+        <h3 class="mb-0">Deneyim Ekleme Tablosu</h3>
+    </div>
+@using (Html.BeginForm("AddPortfolio", "Portfolio", FormMethod.Post))
+{
+    <br />
+    @Html.Label("Proje Adı")
+    @Html.TextBoxFor(x => x.Name, new {@class = "form-control",placeholder = "Proje Adı Giriniz"})
+    <br />
+    @Html.Label("Resim Url")
+    @Html.TextBoxFor(x => x.ImageUrl, new {@class = "form-control",placeholder = "Resim Url  Giriniz"})
+    <br />
+    @Html.Label("Küçük Resim Url")
+    @Html.TextBoxFor(x => x.SmallImageUrl2, new  { @class = "form-control" ,placeholder = "Küçük Resim Url Giriniz"})
+    <br />
+    @Html.Label("Proje Url")
+    @Html.TextBoxFor(x => x.ProjectUrl, new {@class = "form-control",placeholder = "Proje Url Giriniz"})
+    <br />
+    @Html.Label("Fiyatı Giriniz")
+    @Html.TextBoxFor(x => x.Price, new {@class = "form-control",placeholder = " Fiyatı Giriniz"})
+    <br />
+    @Html.Label("Proje Adı")
+    @Html.TextBoxFor(x => x.Platform, new {@class = "form-control",placeholder = " Platform Giriniz"})
+    <br />
+    @Html.Label("Ne kadar ilerlediniz")
+    @Html.TextBoxFor(x => x.Value, new {@class = "form-control",placeholder = "Ne kadar ilerlediniz "})
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+
+}
+
+
+
+
+

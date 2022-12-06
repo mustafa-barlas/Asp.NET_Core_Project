@@ -15,7 +15,7 @@ namespace Core_Project.Controllers
         {
             ViewBag.d1 = "Deneyim Listesi";
             ViewBag.d2 = "Deneyimler";
-            ViewBag.d3 = "Deneyim Ekleme";
+            ViewBag.d3 = "Deneyim Ekleme"; 
             var values = experienceManager.TGetList();
             return View(values);
         }
@@ -32,7 +32,7 @@ namespace Core_Project.Controllers
         [HttpPost]
         public IActionResult AddExperience(Experience experience)
         {
-
+            
             experienceManager.Tadd(experience);
             return RedirectToAction("Index");
         }
@@ -42,7 +42,7 @@ namespace Core_Project.Controllers
         {
             ViewBag.d1 = "Deneyim Listesi";
             ViewBag.d2 = "Deneyimler";
-            ViewBag.d3 = "Deneyim Günceleme";
+            ViewBag.d3 = "Deneyim Listesi";
             var values = experienceManager.TGetByID(id);
             return View(values);
         }
