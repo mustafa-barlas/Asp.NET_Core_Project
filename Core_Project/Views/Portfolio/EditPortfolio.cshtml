@@ -1,14 +1,16 @@
 ﻿@model EntityLayer.Concrete.Portfolio
 @{
-    ViewData["Title"] = "AddPortfolio";
+    ViewData["Title"] = "EditPortfolio";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+
     <div class="card-header border-0">
-        <h3 class="mb-0">Proje Ekleme Tablosu</h3>
+        <h3 class="mb-0">Proje Güncelleme Tablosu</h3>
     </div>
-@using (Html.BeginForm("AddPortfolio", "Portfolio", FormMethod.Post))
+@using (Html.BeginForm("EditPortfolio", "Portfolio", FormMethod.Post))
 {
+    @Html.HiddenFor(x => x.PortfolioID)
     <br />
     @Html.Label("Proje Adı")
     @Html.TextBoxFor(x => x.Name, new {@class = "form-control",placeholder = "Proje Adı Giriniz"})
@@ -42,11 +44,22 @@
     @Html.Label("Ne kadar ilerlediniz")
     @Html.TextBoxFor(x => x.Value, new {@class = "form-control",placeholder = "Ne kadar ilerlediniz "})
     @Html.ValidationMessageFor(x => x.Value  ,"", new { @style="color:red" })
+    <br />
+
+     @Html.Label("Durum")                 
+                <br />
+    @Html.Label("Tamamlandı : ")
+    @Html.RadioButtonFor(x => x.Status, "True")
+    <br />
+    @Html.Label("devam ediyor  : ")
+    @Html.RadioButtonFor(x => x.Status, "False")
+        
 
     <br />
-    <button class="btn btn-success">Kaydet</button>
+    <button class="btn btn-success">Güncelle</button>
 
 }
+
 
 
 

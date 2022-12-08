@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core_Project.Controllers
@@ -11,29 +13,39 @@ namespace Core_Project.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.d1 = "Yetenek Listesi";
-            ViewBag.d2 = "Yetenekler";
-            ViewBag.d3 = "Yetenek Ekleme";
-
+  
             var values = skillManager.TGetList();
-
             return View(values);
         }
+
         [HttpGet]
         public IActionResult AddSkill()
         {
-            ViewBag.d1 = "Yetenek Ekleme";
-            ViewBag.d2 = "Yetenekler";
-            ViewBag.d3 = "Yetenek Ekleme";
+
             return View();
         }
+
+
         [HttpPost]
         public IActionResult AddSkill(Skill skill)
         {
-
-            skillManager.Tadd(skill);
-            return RedirectToAction("Index");
+            SkillValidator rules = new SkillValidator();    
+            ValidationResult result = rules.Validate(skill);
+            if (result.IsValid)
+            {
+                skillManager.Tadd(skill);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();  
         }
+
         public IActionResult DeleteSkill(int id)
         {
             var values = skillManager.TGetByID(id);
@@ -43,9 +55,7 @@ namespace Core_Project.Controllers
         [HttpGet]
         public IActionResult EditSkill(int id)
         {
-            ViewBag.d1 = "Yetenek Güncelleme";
-            ViewBag.d2 = "Yetenekler";
-            ViewBag.d3 = "Yetenek  Güncelleme";
+
             var values = skillManager.TGetByID(id);
             return View(values);
         }

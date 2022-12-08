@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core_Project.Controllers
@@ -11,25 +13,73 @@ namespace Core_Project.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.d1 = "Proje Listesi";
-            ViewBag.d2 = "Projeler";
-            ViewBag.d3 = "Proje Ekleme";
+
             var values = portfolioManager.TGetList();
             return View(values);
         }
+
+
         [HttpGet]
         public IActionResult AddPortfolio()
         {
-            ViewBag.d1 = "Proje Listesi";
-            ViewBag.d2 = "Projeler";
-            ViewBag.d3 = "Proje Ekleme";
-            return View();  
+            return View();
         }
+
         [HttpPost]
         public IActionResult AddPortfolio(Portfolio portfolio)
         {
-            portfolioManager.Tadd(portfolio);
+            PortfolioValidator validations = new PortfolioValidator();
+            ValidationResult results = validations.Validate(portfolio);
+            if (results.IsValid)
+            {
+                portfolioManager.Tadd(portfolio);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
+
+        public IActionResult DeletePortfolio(int id)
+        {
+            var values = portfolioManager.TGetByID(id);
+            portfolioManager.Tdelete(values);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult EditPortfolio(int id)
+        {
+            var values = portfolioManager.TGetByID(id);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult EditPortfolio(Portfolio portfolio)
+        {
+            PortfolioValidator validations = new PortfolioValidator();    
+            ValidationResult results = validations.Validate(portfolio);
+            if (results.IsValid)
+            {
+                portfolioManager.Tupdate(portfolio);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+           
+        }
+
     }
 }

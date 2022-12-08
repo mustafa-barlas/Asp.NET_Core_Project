@@ -13,9 +13,7 @@ namespace Core_Project.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.d1 = "Deneyim Listesi";
-            ViewBag.d2 = "Deneyimler";
-            ViewBag.d3 = "Deneyim Ekleme"; 
+
             var values = experienceManager.TGetList();
             return View(values);
         }
@@ -23,9 +21,7 @@ namespace Core_Project.Controllers
         [HttpGet]
         public IActionResult AddExperience()
         {
-            ViewBag.d1 = "Deneyim Listesi";
-            ViewBag.d2 = "Deneyimler";
-            ViewBag.d3 = "Deneyim Ekleme";
+
             return View();
         }
 
@@ -37,12 +33,19 @@ namespace Core_Project.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public IActionResult DeleteExperience(int id)
+        {
+            var values = experienceManager.TGetByID(id);
+            experienceManager.Tdelete(values);
+            return RedirectToAction("Index");
+
+        }
+
         [HttpGet]
         public IActionResult EditExperience(int id)
         {
-            ViewBag.d1 = "Deneyim Listesi";
-            ViewBag.d2 = "Deneyimler";
-            ViewBag.d3 = "Deneyim Listesi";
+
             var values = experienceManager.TGetByID(id);
             return View(values);
         }
@@ -56,12 +59,5 @@ namespace Core_Project.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult DeleteExperience(int id)
-        {
-            var values = experienceManager.TGetByID(id);
-            experienceManager.Tdelete(values);
-            return RedirectToAction("Index");
-
-        }
     }
 }
