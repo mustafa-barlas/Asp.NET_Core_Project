@@ -1,0 +1,60 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col">
+        <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0">
+                <h3 class="text-white mb-0">Projelerim</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-dark table-flush">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="name">#</th>
+                            <th scope="col" class="sort" data-sort="budget">Başlık</th>
+                            <th scope="col" class="sort" data-sort="status">Yaş</th>
+                            <th scope="col" class="sort" data-sort="completion">Mail</th>
+                            <th scope="col" class="sort" data-sort="status">Telefon</th>
+                            <th scope="col" class="sort" data-sort="address">Adres</th>
+                            <th scope="col" class="sort" data-sort="ımage">Görsel</th>
+                            <th scope="col" class="sort" data-sort="desc">Sil</th>
+                            <th scope="col" class="sort" data-sort="desc">Düzenle</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        @foreach (var item in Model)
+                        { <tr>
+                           <td>@item.AboutID</td>
+                           <td>@item.Title</td>
+                           <td>@item.age</td>
+                           <td>@item.Mail</td>
+                           <td>@item.Phone</td>
+                           <td>@item.Address</td>
+                           <td>
+                               <img style="height : 100px" src="@item.ImageUrl" />
+                               </td>
+                          
+                          
+                                    <td><a href="/About/DeleteAbout/@item.AboutID" class="btn btn-outline-danger">Sil</a></td>
+                                 <td><a href="/About/EditAbout/@item.AboutID " class="btn btn-outline-warning">Düzenle</a></td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/About/EditAbout/" class="btn btn-outline-primary">Yeni Hakımda  Ekle</a>
+
+
+

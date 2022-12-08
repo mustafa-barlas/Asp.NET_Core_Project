@@ -29,16 +29,16 @@ namespace Core_Project.Controllers
         [HttpPost]
         public IActionResult AddSkill(Skill skill)
         {
-            SkillValidator rules = new SkillValidator();    
-            ValidationResult result = rules.Validate(skill);
-            if (result.IsValid)
+            SkillValidator validations = new SkillValidator();    
+            ValidationResult results = validations.Validate(skill);
+            if (results.IsValid)
             {
                 skillManager.Tadd(skill);
                 return RedirectToAction("Index");
             }
             else
             {
-                foreach (var item in result.Errors)
+                foreach (var item in results.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
@@ -62,9 +62,22 @@ namespace Core_Project.Controllers
         [HttpPost]
         public IActionResult EditSkill(Skill skill)
         {
-            skillManager.Tupdate(skill);
-
-            return RedirectToAction("Index");
+            SkillValidator validations = new SkillValidator();
+            ValidationResult results = validations.Validate(skill);
+            if (results.IsValid)
+            {
+                  skillManager.Tupdate(skill);
+                  return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage); 
+                }
+            }
+            return View();   
+            
         }
     }
 }

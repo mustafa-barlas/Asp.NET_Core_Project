@@ -1,8 +1,50 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Feature>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>burasu content alanıdır</h1>
+<div class="card-header border-0">
+    <h3 class="mb-0">Öne Çıkanlar Tablosu</h3>
+</div>
+<!-- Light table -->
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th style="font-size:1rem" scope="col" class="sort" data-sort="name">#</th>
+                <th style="font-size:1rem" scope="col" class="sort" data-sort="budget">Başlık</th>
+                <th style="font-size:1rem" scope="col" class="sort" data-sort="status">ad</th>
+                <th style="font-size:1rem" scope="col" class="sort" data-sort="status">açıklama</th>
+                <th style="font-size:1rem" scope="col">Sil</th>
+                <th style="font-size:1rem" scope="col" class="sort" data-sort="completion">Düzenle</th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            @foreach (var item in Model)
+            {
 
+                <tr>
+                    <td>
+                        @item.FeatureID
+                    </td>
+                    <td>
+                        @item.Header
+                    </td>
+                    <td>
+                        @item.Header
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td> <a href="/Feature/DeleteFeature/@item.FeatureID" class="btn btn-danger">Sil</a></td>
+                    <td> <a href="/Feature/EditFeature/@item.FeatureID" class="btn btn-success">Güncelle</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <br />
+    <a href="/Feature/EditFeature/" class="btn btn-warning">Güncelle </a>
+</div>

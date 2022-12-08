@@ -7,37 +7,38 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core_Project.Controllers
 {
-    public class FeatureController : Controller
+    public class AboutController : Controller
     {
-        FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
-
+        AboutManager aboutManager = new AboutManager(new EfAboutDal());
 
         public IActionResult Index()
         {
-            var values = featureManager.TGetList();
+
+            var values = aboutManager.TGetList();
             return View(values);
         }
-        
-        public IActionResult DeleteFeature(int id)
+
+        public IActionResult DeleteAbout(int id)
         {
-            var values = featureManager.TGetByID(id);
-            featureManager.Tdelete(values);
+            var values = aboutManager.TGetByID(id);
+            aboutManager.Tdelete(values);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
-        public IActionResult EditFeature(int id)
+        public IActionResult EditAbout(int id)
         {
-            var values = featureManager.TGetByID(id);
+            var values = aboutManager.TGetByID(id);
             return View(values);
         }
         [HttpPost]
-        public IActionResult EditFeature(Feature feature)
+        public IActionResult EditAbout(About about)
         {
-            FeatureValidator validations = new FeatureValidator();
-            ValidationResult results = validations.Validate(feature);
+            AboutValidator validations = new AboutValidator();  
+            ValidationResult results = validations.Validate(about);
             if (results.IsValid)
             {
-                featureManager.Tupdate(feature);
+                aboutManager.Tupdate(about);
                 return RedirectToAction("Index");
             }
             else

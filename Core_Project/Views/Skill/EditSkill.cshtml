@@ -15,9 +15,11 @@
     <br />
     @Html.Label("Yetenek")
     @Html.TextBoxFor(x => x.Title, new { @class = "form-control" , placeholder="Yetenek Giriniz" })
+    @Html.ValidationMessageFor(x => x.Title , "", new { @style="color:red" })
     <br />
     @Html.Label("Değer")
     @Html.TextBoxFor(x => x.Value , new { @class = "form-control", placeholder="Değer Giriniz"})
+    @Html.ValidationMessageFor(x => x.Value , "", new { @style="color:red" })
     <br />
     <button class="btn btn-dark">Güncelle</button>
 

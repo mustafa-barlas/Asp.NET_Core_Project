@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
@@ -29,8 +31,21 @@ namespace Core_Project.Controllers
         public IActionResult AddExperience(Experience experience)
         {
             
-            experienceManager.Tadd(experience);
-            return RedirectToAction("Index");
+            ExperienceValidator validations = new ExperienceValidator();    
+            ValidationResult results = validations.Validate(experience);
+            if (results.IsValid)
+            {
+                experienceManager.Tadd(experience);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
 
 
@@ -53,10 +68,21 @@ namespace Core_Project.Controllers
         [HttpPost]
         public IActionResult EditExperience(Experience experience)
         {
-
-         
-            experienceManager.Tupdate(experience);
-            return RedirectToAction("Index");
+            ExperienceValidator validations = new ExperienceValidator();
+            ValidationResult results = validations.Validate(experience);
+            if (results.IsValid)
+            {
+                experienceManager.Tupdate(experience);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage); 
+                }
+            }
+            return View();
         }
 
     }

@@ -13,36 +13,36 @@
     @Html.HiddenFor(x => x.PortfolioID)
     <br />
     @Html.Label("Proje Adı")
-    @Html.TextBoxFor(x => x.Name, new {@class = "form-control",placeholder = "Proje Adı Giriniz"})
+    @Html.TextBoxFor(x => x.Name, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.Name  ,"", new { @style="color:red" })
     <br />
     @Html.Label("Resim Url")
-    @Html.TextBoxFor(x => x.ImageUrl, new {@class = "form-control",placeholder = "Resim Url  Giriniz"})
+    @Html.TextBoxFor(x => x.ImageUrl, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.ImageUrl  ,"", new { @style="color:red" })
 
     <br />
     @Html.Label("Küçük Resim Url")
-    @Html.TextBoxFor(x => x.SmallImageUrl2, new  { @class = "form-control" ,placeholder = "Küçük Resim Url Giriniz"})
+    @Html.TextBoxFor(x => x.SmallImageUrl2, new  { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.SmallImageUrl2  ,"", new { @style="color:red" })
 
     <br />
     @Html.Label("Proje Url")
-    @Html.TextBoxFor(x => x.ProjectUrl, new {@class = "form-control",placeholder = "Proje Url Giriniz"})
+    @Html.TextBoxFor(x => x.ProjectUrl, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.ProjectUrl  ,"", new { @style="color:red" })
 
     <br />
     @Html.Label("Fiyatı Giriniz")
-    @Html.TextBoxFor(x => x.Price, new {@class = "form-control",placeholder = " Fiyatı Giriniz"})
+    @Html.TextBoxFor(x => x.Price, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.Price  ,"", new { @style="color:red" })
 
     <br />
     @Html.Label("Proje Adı")
-    @Html.TextBoxFor(x => x.Platform, new {@class = "form-control",placeholder = " Platform Giriniz"})
+    @Html.TextBoxFor(x => x.Platform, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.Platform  ,"", new { @style="color:red" })
 
     <br />
     @Html.Label("Ne kadar ilerlediniz")
-    @Html.TextBoxFor(x => x.Value, new {@class = "form-control",placeholder = "Ne kadar ilerlediniz "})
+    @Html.TextBoxFor(x => x.Value, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.Value  ,"", new { @style="color:red" })
     <br />
 

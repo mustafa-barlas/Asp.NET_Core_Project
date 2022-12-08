@@ -13,10 +13,12 @@
 {
     <br />
     @Html.Label("Yetenek ")
-    @Html.TextBoxFor(x => x.Title , new {@class = "form-control", placeholder ="Yetenek İsmi Giriniz"})
+    @Html.TextBoxFor(x => x.Title , new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Title , "", new { @style="color:red" })
     <br />
     @Html.Label("Yetenek Değeri ")
-    @Html.TextBoxFor(X => X.Value , new {@class = "form-control", placeholder = "Yetenek İçin Bir Değer Giriniz"})
+    @Html.TextBoxFor(X => X.Value , new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Value ,"",new { @style ="color:red"})
     <br />
     <button class="btn btn-success">Kaydet</button>
 }
