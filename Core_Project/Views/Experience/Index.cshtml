@@ -2,54 +2,41 @@
 @model List<Experience>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<!-- Card header -->
-<div class="card-header border-0">
-    <h3 class="mb-0">Deneyim Tablosu</h3>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Deneyimler</h4>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Deneyim</th>
+                            <th>Tarih</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ExperienceID</td>
+                                <td>@item.Name</td>
+                                <td>@item.Date</td>
+                                <td><a href="/Experience/DeleteExperience/@item.ExperienceID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Experience/EditExperience/@item.ExperienceID" class="btn btn-outline-success">Güncelle</a></td>
+                            </tr>
+                        }
+                       
+                    </tbody>
+                </table>
+                <a href="/Experience/AddExperience/" class="btn btn-outline-info">Yeni Deneyim Girişi</a>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- Light table -->
-<div class="table-responsive">
-    <table class="table align-items-center table-flush">
-
-        <thead class="thead-light">
-            <tr>
-                <th style="font-size:1rem" scope="col" class="sort" data-sort="name">#</th>
-                <th style="font-size:1rem" scope="col" class="sort" data-sort="budget">Başlık</th>
-                <th style="font-size:1rem" scope="col" class="sort" data-sort="status">Tarih</th>
-                <th style="font-size:1rem" scope="col">Sil</th>
-                <th style="font-size:1rem" scope="col" class="sort" data-sort="completion">Düzenle</th>
-                <th style="font-size:1rem" scope="col"></th>
-            </tr>
-        </thead>
-        <tbody class="list">
-            @foreach (var item in Model)
-            {
-
-                <tr>
-                    <th>
-                        @item.ExperienceID
-                    </th>
-
-                    <th class="budget">
-                        @item.Name
-                    </th>
-
-                    <th>
-                        @item.Date
-                    </th>
-
-                    <td> <a href="/Experience/DeleteExperience/ @item.ExperienceID" class="btn btn-danger">Sil</a></td>
-
-                    <td> <a href="/Experience/EditExperience/ @item.ExperienceID" class="btn btn-success">Güncelle</a></td>
-                </tr>
-            }
-
-        </tbody>
-    </table>
-    <br />
-    <a href="/Experience/AddExperience/" class="btn btn-warning">Yeni Deneyim Girişi</a>
-</div>
-<!-- Card footer -->
-
