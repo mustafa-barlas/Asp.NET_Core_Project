@@ -1,7 +1,7 @@
 ﻿@model EntityLayer.Concrete.Portfolio
 @{
     ViewData["Title"] = "EditPortfolio";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
 
@@ -53,6 +53,15 @@
     <br />
     @Html.Label("devam ediyor  : ")
     @Html.RadioButtonFor(x => x.Status, "False")
+
+    <div class="form-group">
+        <label >Gender</label>
+        <select class="form-control" id="Status">
+            <option>Devam Ediyor</option>
+            <option>Tamamlandı</option>
+        </select>
+    </div>
+
         
 
     <br />

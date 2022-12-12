@@ -2,24 +2,31 @@
 
 @{
     ViewData["Title"] = "AddSkill";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-
- <div class="card-header border-0">
-    <h3 class="mb-0">Yetenek Ekleme Tablosu</h3>
-</div>
 @using (Html.BeginForm("AddSkill", "Skill", FormMethod.Post))
 {
-    <br />
-    @Html.Label("Yetenek ")
-    @Html.TextBoxFor(x => x.Title , new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Title , "", new { @style="color:red" })
-    <br />
-    @Html.Label("Yetenek Değeri ")
-    @Html.TextBoxFor(X => X.Value , new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Value ,"",new { @style ="color:red"})
-    <br />
-    <button class="btn btn-success">Kaydet</button>
-}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">  Deneyim Düzenleme Paneli </p>
+            <form class="forms-sample" >
 
+                <div class="form-group">
+                    <label for="exampleInputName1">Başlık</label>
+                    @Html.TextBoxFor(x => x.Title , new {@class ="form-control"})
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Değer</label>
+                    @Html.TextBoxFor(x => x.Value , new {@class ="form-control"})
+        
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <button class="btn btn-dark">   <a href="/Skill/Index/" style="text-decoration:none">Iptal</a>  </button>
+            </form>
+        </div>
+    </div>
+</div>
+}

@@ -2,32 +2,41 @@
 
 @{
     ViewData["Title"] = "AddExperience";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<div class="card-header border-0">
-    <h3 class="mb-0">Deneyim Ekleme Tablosu</h3>
-</div>
+
 @using (Html.BeginForm("AddExperience", "Experience", FormMethod.Post))
 {
-    <br />
-    @Html.Label("Deneyim")
-    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.Name , "", new { @style="color:red" })
-    <br />
-    @Html.Label("Tarih Aralıgıni Giriniz")
-    @Html.TextBoxFor(x => x.Date , new { @class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Date , "", new { @style="color:red" })
-    <br />
-    @Html.Label("Resim Yolu")
-    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.ImageUrl , "", new { @style="color:red" })
-        <br />
-    @Html.Label("Açıklama")
-    @Html.TextBoxFor(x => x.Description , new { @class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Description , "", new { @style="color:red" })
-        <br />
-    <button class="btn btn-success">Kaydet</button>
 
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description"> Yeni Deneyim Ekleme Paneli </p>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputName1">Başlık</label>
+                    <input type="text" class="form-control" name="Name" >
+                    
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Tarih</label>
+                    <input type="text" class="form-control" name="Date">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword4">Görsel</label>
+                    <input type="text" class="form-control" name="ImageUrl">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleTextarea1">Açıklama</label>
+                    <textarea class="form-control" name="Description" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <button  class="btn btn-dark">   <a href="/Experience/Index/" style="text-decoration:none">Iptal</a>  </button>
+            </form>
+        </div>
+    </div>
+</div>
 }
 

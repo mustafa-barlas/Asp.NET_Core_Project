@@ -2,7 +2,7 @@
 @model List<Skill>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
 <!-- Card header -->
@@ -35,15 +35,11 @@
                 </td>
                
                
-                <td>
-                    <div class="d-flex align-items-center">
-                        <span class="completion mr-2">@item.Value%</span>
-                        <div>
-                            <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@item.Value%" aria-valuemin="0" aria-valuemax="100" style="width: @item.Value%"></div>
-                            </div>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: @item.Value%;" aria-valuenow="@item.Value%" aria-valuemin="0" aria-valuemax="100">@item.Value%</div>
                         </div>
-                    </div>
+                    
                 </td>
                <td> <a href="/Skill/DeleteSkill/@item.SkillID" class="btn btn-danger">Sil</a></td>
                <td> <a href="/Skill/EditSkill/@item.SkillID" class="btn btn-success">Güncelle</a></td>
