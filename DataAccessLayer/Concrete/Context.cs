@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<WriterUser,WriterRole,int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {//optionsBuilder.UseSqlServer()
+        {   //optionsBuilder.UseSqlServer()
             optionsBuilder.UseNpgsql("User ID=postgres;Password=1234;Server=localhost;Port=5432;Database=AspNetProject;Integrated Security=true;Pooling=true;");
 
         }
