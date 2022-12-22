@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 namespace Core_Project.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     public class LoginController : Controller
     {
         private readonly SignInManager<WriterUser> _signInManager;
+
 
         public LoginController(SignInManager<WriterUser> signInManager)
         {
@@ -21,24 +23,21 @@ namespace Core_Project.Areas.Writer.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Index(UserLoginViewModel p)
         {
-
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(p.Username, p.Password, true, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index","Default");
+                    return RedirectToAction("Index", "Profile", new { area = "Writer" });
                 }
                 else
                 {
-                    ModelState.AddModelError("", " kulanıcı adı veya şifre hatalı");
+                    ModelState.AddModelError("", "Hatalı kullanıcı adı veya şifre");
                 }
             }
-
             return View();
         }
     }
