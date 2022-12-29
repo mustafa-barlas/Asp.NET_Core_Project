@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.WriterUser
+﻿@model Core_Project.Areas.Writer.Models.UserEditViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
@@ -9,18 +9,18 @@
         <div class="card-body">
             <h4 class="card-title">Profil Düzenleme</h4>
            
-            <form class="forms-sample">
+            <form class="forms-sample"  method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="exampleInputName1">Adınız</label>
-                    <input type="text" class="form-control" name="@Model.Name" value="@Model.Name" id="exampleInputName1" placeholder="Ad">
+                    <input type="text" class="form-control"  asp-for="Name" id="exampleInputName1" placeholder="Ad">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Soyadınız</label>
-                    <input type="text" class="form-control" name="@Model.Surname" value="@Model.Surname" id="exampleInputName1" placeholder="Soyadı">
+                    <input type="text" class="form-control" asp-for="Surname" id="exampleInputName1" placeholder="Soyadı">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Mail</label>
-                    <input type="email" class="form-control" name="@Model.Email" value="@Model.Email" id="exampleInputEmail3" placeholder="example@example.om">
+                    <input type="email" class="form-control" asp-for="Mail" id="exampleInputEmail3" placeholder="parasors@parasors.com">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword4">Şifre</label>
@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                     <label>Resim Seç</label>
-                    <input type="file" name="img[]" class="file-upload-default">
+                    <input type="file" asp-for="Picture" >
                     <div class="input-group col-xs-12">
                         <input type="text" class="form-control file-upload-info" disabled placeholder="Resim yükle">
                         <span class="input-group-append">

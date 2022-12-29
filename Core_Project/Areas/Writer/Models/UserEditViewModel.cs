@@ -16,6 +16,7 @@ namespace Core_Project.Areas.Writer.Models
 
         public string Mail { get; set; }
 
+
         public IFormFile Picture { get; set; }
     }
 }
