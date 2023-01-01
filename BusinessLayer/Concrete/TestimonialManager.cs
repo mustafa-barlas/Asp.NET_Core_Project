@@ -42,5 +42,10 @@ namespace BusinessLayer.Concrete
         {
             _testimonialDal.Update(t);  
         }
+
+        public List<Testimonial> TGetListByFilter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

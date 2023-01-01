@@ -44,5 +44,7 @@ namespace DataAccessLayer.Concrete
 
         public DbSet<Announcement> Announcements { get; set; }
 
+        public DbSet<WriterMessage> WriterMessages { get; set; }
+
     }
 }
