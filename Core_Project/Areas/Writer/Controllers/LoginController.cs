@@ -31,14 +31,19 @@ namespace Core_Project.Areas.Writer.Controllers
                 var result = await _signInManager.PasswordSignInAsync(p.Username, p.Password, true, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index","Default");
+                    return RedirectToAction("Index","Profile",new {area = "Writer"});
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Hatalı kullanıcı adı veya şifre");
+                    ModelState.AddModelError("", " kullanıcı adı veya şifre hatalı");
                 }
             }
             return View();
+        }
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index","Login");
         }
     }
 }

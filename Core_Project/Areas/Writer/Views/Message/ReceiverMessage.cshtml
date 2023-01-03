@@ -19,6 +19,7 @@
                             <th>Gönderen</th>
                             <th>Tarih</th>
                             <th>Detay</th>
+                            <th>Sil</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,7 @@
                                 <td>@item.SenderName</td>
                                 <td>@(((DateTime)item.Date).ToString("dd-MMM-yyyy"))</td>
                                 <td> <a href="/Writer/Message/ReceiverMessageDetails/@item.WriterMessageID" class="btn btn-outline-primary"> Mesajı Gör</a> </td>
+                                <td> <a href="/Writer/Message/DeleteMessageForReceiver/@item.WriterMessageID">Sil</a></td>
                             </tr>
                         }
 
