@@ -26,7 +26,6 @@ namespace Core_Project.Areas.Writer.Controllers
         [Route("ReceiverMessage")]
         public async Task<IActionResult> ReceiverMessage(string p)
         {
-
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             p = values.Email;
             var messageList = writerMessageManager.GetListReceiverMessage(p);
@@ -36,27 +35,23 @@ namespace Core_Project.Areas.Writer.Controllers
         [Route("SenderMessage")]
         public async Task<IActionResult> SenderMessage(string p)
         {
-
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             p = values.Email;
             var messageList = writerMessageManager.GetListSenderMessage(p);
             return View(messageList);
         }
-
+        [Route("MessageDetails/{id}")]
+        public IActionResult MessageDetails(int id)
+        {
+            WriterMessage writerMessage = writerMessageManager.TGetByID(id);
+            return View(writerMessage);
+        }
         [Route("ReceiverMessageDetails/{id}")]
         public IActionResult ReceiverMessageDetails(int id)
         {
             WriterMessage writerMessage = writerMessageManager.TGetByID(id);
             return View(writerMessage);
         }
-
-        [Route("SenderMessageDetails/{id}")]
-        public IActionResult SenderMessageDetails(int id)
-        {
-            WriterMessage writerMessage = writerMessageManager.TGetByID(id);
-            return View(writerMessage);
-        }
-
         [HttpGet]
         [Route("")]
         [Route("SendMessage")]
@@ -64,28 +59,25 @@ namespace Core_Project.Areas.Writer.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [Route("")]
         [Route("SendMessage")]
-        public async Task<IActionResult> SendMessage(WriterMessage writerMessage)
+        public async Task<IActionResult> SendMessage(WriterMessage p)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             string mail = values.Email;
             string name = values.Name + " " + values.Surname;
-            writerMessage.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-            writerMessage.Sender = mail;
-            writerMessage.SenderName = name;
-            Context context = new Context();
-            var userNameAndSurname = context.Users.Where(x => x.Email == writerMessage.Receiver).Select(y => y.Name +" "+ y.Surname).FirstOrDefault();
-            writerMessage.ReceiverName = userNameAndSurname;
-            writerMessageManager.Tadd(writerMessage);
+            p.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            p.Sender = mail;
+            p.SenderName = name;
+            Context c = new Context();
+            var usernamesurname = c.Users.Where(x => x.Email == p.Receiver).Select(y => y.Name + " " + y.Surname).FirstOrDefault();
+            p.ReceiverName = usernamesurname;
+            writerMessageManager.Tadd(p);
+
             return RedirectToAction("SenderMessage");
-        }
-        public IActionResult DeleteMessageForReceiver(int id)
-        {
-            var values = writerMessageManager.TGetByID(id);
-            writerMessageManager.Tdelete(values);
-            return RedirectToAction("ReceiverMessage");
+
         }
     }
 }

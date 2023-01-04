@@ -1,21 +1,22 @@
 ﻿@using EntityLayer.Concrete
-@model List<Message>
+@model List<WriterMessage>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "SenderMessageList";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">İletişim Sayfası</h4>
+            <h4 class="card-title">Gönderilen Mesajlar</h4>
 
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Gönderen</th>
+                            <th>Alıcı</th>
+                            <th>Konu</th>
                             <th>Mail</th>
                             <th>Tarih</th>
                             <th>Sil</th>
@@ -26,19 +27,21 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.MessageID</td>
-                                <td>@item.Name</td>
-                                <td>@item.Mail</td>
+                                <td>@item.WriterMessageID</td>
+                                <td>@item.ReceiverName</td>
+                                <td>@item.Subject</td>
+                                <td>@item.Receiver</td>
                                 <td>@item.Date</td>
-                                <td><a href="/Experience/DeleteExperience/@item.MessageID" class="btn btn-outline-danger">Sil</a></td>
-                                <td><a href="/Experience/EditExperience/@item.MessageID" class="btn btn-outline-success">Mesajı Gör</a></td>
+                                <td><a href="/AdminMessage/AdminDeleteMessage/@item.WriterMessageID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/AdminMessage/AdminMessageDetails/@item.WriterMessageID" class="btn btn-outline-success">Mesajı Gör</a></td>
                             </tr>
                         }
 
                     </tbody>
                 </table>
-                <a href="/Message/SendMessage" class="btn btn-outline-info"> Mesaj Yaz</a>
+                <a asp-action="AdminMessageAdd" class="btn btn-outline-danger"> Mesaj Yaz</a>
             </div>
         </div>
     </div>
 </div>
+

@@ -13,5 +13,16 @@ namespace Core_Project.Controllers
             var values = messageManager.TGetList();
             return View(values);
         }
+        public IActionResult DeleteMessage(int id)
+        {
+            var values = messageManager.TGetByID(id);
+            messageManager.Tdelete(values);
+            return RedirectToAction("Index");
+        }
+        public IActionResult ContactDetails(int id)
+        {
+            var values = messageManager.TGetByID(id);
+            return View(values);
+        }
     }
 }
