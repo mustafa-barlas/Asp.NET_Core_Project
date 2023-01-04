@@ -4,48 +4,50 @@
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<div class="card-header border-0">
-    <h3 class="mb-0">Hakında Güncelleme Tablosu</h3>
-</div>
 @using (Html.BeginForm("EditAbout", "About", FormMethod.Post))
 {
-    @Html.HiddenFor(x => x.AboutID)
-    <br />
-    @Html.Label("Hakında Başlıgı")
-    @Html.TextBoxFor(x => x.Title, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Title  ,"", new { @style="color:red" })
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-description">  Deneyim Düzenleme Paneli </p>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label >ID</label>
+                        @Html.TextBoxFor(x => x.AboutID , new {@class ="form-control"})
+                    </div>
+                    <div class="form-group">
+                        <label >Başlık</label>
+                        @Html.TextBoxFor(x => x.Title , new {@class ="form-control"})
 
-    <br />
-    @Html.Label("Yaş")
-    @Html.TextBoxFor(x => x.age, new  { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.age  ,"", new { @style="color:red" })
-
-    <br />
-    @Html.Label("Mail")
-    @Html.TextBoxFor(x => x.Mail, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Mail  ,"", new { @style="color:red" })
-
-    <br />
-    @Html.Label("Telefon")
-    @Html.TextBoxFor(x => x.Phone, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Phone  ,"", new { @style="color:red" })
-
-    <br />
-    @Html.Label("Adres")
-    @Html.TextBoxFor(x => x.Address, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Address  ,"", new { @style="color:red" })
-
-    <br />
-    @Html.Label("Görsel Adresi")
-    @Html.TextBoxFor(x => x.ImageUrl, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.ImageUrl  ,"", new { @style="color:red" })
-
-     <br />
-    @Html.Label("Açıklama")
-    @Html.TextAreaFor(x => x.Description,10,2, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Description  ,"", new { @style="color:red" })
-    <br />
-
-    <button class="btn btn-success">Güncelle</button>
-
+                    </div>
+                    <div class="form-grou p">
+                        <label >Yaş</label>
+                        @Html.TextBoxFor(x => x.age , new {@class ="form-control"})
+                    </div>
+                    <div class="form-grou p">
+                        <label>Mail</label>
+                        @Html.TextBoxFor(x => x.Mail , new {@class ="form-control"})
+                    </div>
+                         <div class="form-grou p">
+                        <label>Adres</label>
+                        @Html.TextBoxFor(x => x.Address , new {@class ="form-control"})
+                    </div>
+                    <div class="form-grou p">
+                        <label>Telefon</label>
+                        @Html.TextBoxFor(x => x.Phone , new {@class ="form-control"})
+                    </div>                    
+                    <div class="form-grou p">
+                        <label>Görsel</label>  
+                        @Html.TextBoxFor(x => x.ImageUrl , new {@class ="form-control"})
+                    </div>
+                    <div class="form-group">
+                        <label >Açıklama</label>
+                        @Html.TextAreaFor(x => x.Description ,6,3, new {@class ="form-control"})
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                    <button class="btn btn-dark">   <a href="/About/Index/" style="text-decoration:none">Iptal</a>  </button>
+                </form>
+            </div>
+        </div>
+    </div>
 }

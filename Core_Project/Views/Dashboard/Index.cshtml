@@ -62,7 +62,7 @@
     
     <div class="row">
 
-        @await Component.InvokeAsync("MessageList")
+        @*@await Component.InvokeAsync("MessageList")*@
 
         @await Component.InvokeAsync("SlideList")
 
@@ -71,11 +71,7 @@
         
     </div>
     @await Component.InvokeAsync("VisitorMap")
-    
-    <!-- main-panel ends -->
-    <!-- page-body-wrapper ends -->
-    <!-- container-scroller -->
-    <!-- plugins:js -->
+
     <!--<script src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>-->
     <!-- endinject -->
     <!-- Plugin js for this page -->
@@ -93,6 +89,7 @@
     <script src="~/corona/template/assets/js/settings.js"></script>
     <script src="~/corona/template/assets/js/todolist.js"></script>
     <script src="~/corona/template/assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
     <!-- End custom js for this page -->
 </body>
 </html>

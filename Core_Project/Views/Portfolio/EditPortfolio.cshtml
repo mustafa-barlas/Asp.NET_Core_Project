@@ -10,6 +10,11 @@
     </div>
 @using (Html.BeginForm("EditPortfolio", "Portfolio", FormMethod.Post))
 {
+    <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">  Proje Düzenleme Paneli </p>
+            <form class="forms-sample">
     @Html.HiddenFor(x => x.PortfolioID)
     <br />
     @Html.Label("Proje Adı")
@@ -45,27 +50,24 @@
     @Html.TextBoxFor(x => x.Value, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.Value  ,"", new { @style="color:red" })
     <br />
-
-     @Html.Label("Durum")                 
-                <br />
-    @Html.Label("Tamamlandı : ")
-    @Html.RadioButtonFor(x => x.Status, "True")
-    <br />
-    @Html.Label("devam ediyor  : ")
-    @Html.RadioButtonFor(x => x.Status, "False")
-
     <div class="form-group">
-        <label >Gender</label>
-        <select class="form-control" id="Status">
-            <option>Devam Ediyor</option>
-            <option>Tamamlandı</option>
-        </select>
+                        @Html.Label("Durum")
+                        <br />
+                        @Html.Label("Tamamlandı :   " )
+                        @Html.RadioButtonFor(x => x.Status, "True")
+                        <br />
+                        @Html.Label("devam ediyor  : ")
+                        @Html.RadioButtonFor(x => x.Status, "False")
     </div>
+     
 
-        
 
     <br />
     <button class="btn btn-success">Güncelle</button>
+                        </form>
+                </div>
+                            </div>
+        </div>
 
 }
 

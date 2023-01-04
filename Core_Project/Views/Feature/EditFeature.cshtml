@@ -4,11 +4,14 @@
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<div class="card-header border-0">
-    <h3 class="mb-0">Öne Çıkanlar Düzenleme Sayfası</h3>
-</div>
+
 @using (Html.BeginForm("EditFeature", "Feature", FormMethod.Post))
 {
+        <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description"> Öne Çıkanlar Düzenleme Paneli </p>
+            <form class="forms-sample">
     @Html.HiddenFor(x => x.FeatureID)
     <br />
     @Html.Label("Başlık")
@@ -25,6 +28,10 @@
     @Html.ValidationMessageFor(x => x.Title  ,"", new { @style="color:red" })
     <br />
     <button class="btn btn-success">Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
 }
 
