@@ -2,7 +2,7 @@
 
 namespace Core_Project.Controllers
 {
-    public class TestController : Controller
+    public class ErrorPageController : Controller
     {
         public IActionResult Index()
         {

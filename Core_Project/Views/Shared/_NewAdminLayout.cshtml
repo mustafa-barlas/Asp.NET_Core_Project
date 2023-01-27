@@ -83,7 +83,7 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <p class="p-3 mb-0 text-center">Tüm Projeleri Gör</p>
+                                <p class="p-3 mb-0 text-center"> <a href="/Portfolio/Index"> Tüm Projeleri Gör</a> </p>
                             </div>
                         </li>
                         <li class="nav-item nav-settings d-none d-lg-block">
@@ -97,15 +97,14 @@
                                 <span class="count bg-success"></span>
                             </a>
 
-@*                            @await Component.InvokeAsync("AdminNavbarMessageList")
-*@
+                            @await Component.InvokeAsync("AdminNavbarMessageList")
                         </li>
-@*                        @await Component.InvokeAsync("AdminNotificationNavbarList")
-*@                        <li class="nav-item dropdown">
+                        @await Component.InvokeAsync("AdminNotificationNavbarList")
+                        <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                                 <div class="navbar-profile">
                                     <img class="img-xs rounded-circle" src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/images/faces/face15.jpg" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Murat Yücedağ</p>
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Mustafa Barlas</p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>
@@ -147,7 +146,8 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     @RenderBody()
-                </div>
+                    
+              </div>
                 @await RenderSectionAsync("scripts", required: false)
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
