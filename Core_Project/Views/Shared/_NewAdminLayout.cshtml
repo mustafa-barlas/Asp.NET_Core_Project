@@ -21,9 +21,12 @@
         <!-- partial:../../partials/_sidebar.html -->
         <nav   class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="../../index.html"><img style="height:50px " src="~/skydash/images/logo.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo" href="/Dashboard/Index/"><img style="height:50px " src="~/skydash/images/logo.png" alt="logo" /></a>
                 <a  class="sidebar-brand brand-logo-mini" href="../../index.html"><img  src="~/skydash/images/logo.png" alt="logo" /></a>
             </div>
+            <br />
+            
+            
             @await Html.PartialAsync("/Views/Admin/NewSidebar.cshtml")
         </nav>
         <!-- partial -->
@@ -83,7 +86,7 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <p class="p-3 mb-0 text-center"> <a href="/Portfolio/Index"> Tüm Projeleri Gör</a> </p>
+                                <p class="p-3 mb-0 text-center">Tüm Projeleri Gör</p>
                             </div>
                         </li>
                         <li class="nav-item nav-settings d-none d-lg-block">
@@ -98,44 +101,10 @@
                             </a>
 
                             @await Component.InvokeAsync("AdminNavbarMessageList")
+
                         </li>
                         @await Component.InvokeAsync("AdminNotificationNavbarList")
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
-                                <div class="navbar-profile">
-                                    <img class="img-xs rounded-circle" src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/images/faces/face15.jpg" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Mustafa Barlas</p>
-                                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                                <h6 class="p-3 mb-0">Profil</h6>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item" href="/Writer/Profile/Index/">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-dark rounded-circle">
-                                            <i class="mdi mdi-settings text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject mb-1">Ayarlar</p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item" href="/Writer/Login/LogOut/">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-dark rounded-circle">
-                                            <i class="mdi mdi-logout text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject mb-1">Çıkış Yap</p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="/Writer/Profile/Index/"> <p class="p-3 mb-0 text-center">Gelişmiş Ayarlar</p></a>
-                            </div>
-                        </li>
+                       
                     </ul>
                     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                         <span class="mdi mdi-format-line-spacing"></span>
@@ -146,14 +115,13 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     @RenderBody()
-                    
-              </div>
+                </div>
                 @await RenderSectionAsync("scripts", required: false)
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © @((DateTime.Now).ToString("yyyy")) Parasors</span>
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © @DateTime.Now.Year | Parasors Tüm hakları saklıdır</span>
                     </div>
                 </footer>
                 <!-- partial -->
@@ -162,6 +130,8 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
     @*<script src="~/corona-free-dark-bootstrap-admin-template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>*@
     <!-- endinject -->
     <!-- Plugin js for this page -->

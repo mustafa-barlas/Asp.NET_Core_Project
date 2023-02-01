@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Core_Project
+namespace Core_Proje
 {
     public class Startup
     {
@@ -35,25 +36,19 @@ namespace Core_Project
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-                config.Filters.Add(new AuthorizeFilter(policy));    
+                               .RequireAuthenticatedUser()
+                               .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-
             services.AddMvc();
-            //services.AddAuthentication(
-            //    CookieAuthenticationDefaults.AuthenticationScheme)
-            //    .AddCookie(x =>
-            //    {
-            //        x.LoginPath = "/Writer/Login/Index/";
-            //    });
+
 
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-                options.AccessDeniedPath= "/ErrorPage/Index/";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(100);
+                options.AccessDeniedPath = "/ErrorPage/Index/";
                 options.LoginPath = "/Writer/Login/Index/";
             });
         }
@@ -76,12 +71,8 @@ namespace Core_Project
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseAuthentication();
-
             app.UseRouting();
-
-            
 
             app.UseAuthorization();
 
@@ -91,11 +82,12 @@ namespace Core_Project
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                   name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}"
                 );
             });
         }

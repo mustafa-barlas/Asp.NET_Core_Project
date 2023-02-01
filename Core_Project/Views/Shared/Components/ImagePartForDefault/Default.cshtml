@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.WriterUser 
+
+                                <li class="nav-item nav-profile dropdown">
+                                          
+                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                                     <img src="/userimage/@ViewBag.v1" style="border-radius: 75%;
+                                          height: 75px;
+                                         width: 75px;
+                                          object-fit: cover;"  />
+                          </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                                <a class="dropdown-item" href="/Writer/Profile/Index/">
+                                    <i class="ti-settings text-primary"></i>
+                                    @ViewBag.v2
+                                </a>
+                                <a class="dropdown-item" href="/Writer/Profile/Index/">
+                                    <i class="ti-settings text-primary"></i>
+                                    Profil
+                                </a>
+                                <a class="dropdown-item" href="/Writer/Login/LogOut/">
+                                    <i class="ti-power-off text-primary"></i>
+                                    Çıkış Yap
+                                </a>
+                            </div>
+                        </li>

@@ -47,8 +47,9 @@
             <footer class="pt-4 pb-4 text-center bg-light">
                 <div class="container">
                     <div class="my-3">
-                        <div class="h4">Murat Yücedağ</div>
-                        <p>Yazılım Mühendisi & Eğitmen</p>
+                        <div class="h4">Mustafa Barlas</div>
+                        <p>Yazılım Geliştirici</p>
+                        @await Component.InvokeAsync("SocialMediaList")
                         <div class="social-nav">
                             <nav role="navigation">
                                 <ul class="nav justify-content-center">
@@ -63,9 +64,7 @@
                     </div>
                     <div class="text-small text-secondary">
                         <div class="mb-1">&copy; @DateTime.Now.Year. Tüm hakları saklıdır.</div>
-                        <div>
-                            <!-- Make sure to buy a license for the template before removing the line below. Buy license on https://templateflip.com/ -->Html5 Tema - <a href="https://templateflip.com/" target="_blank">TemplateFlip</a>
-                        </div>
+                       
                     </div>
                 </div>
             </footer>

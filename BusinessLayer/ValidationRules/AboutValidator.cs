@@ -24,11 +24,11 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.Mail).EmailAddress().WithMessage("Mail Formtında giriniz");
 
             RuleFor(x => x.Phone).NotEmpty().WithMessage("Telefon alanı boş geçilelemez");
-            RuleFor(x => x.Phone).MaximumLength(11).WithMessage("Telefon alanı boş geçilelemez");
-            RuleFor(x => x.Phone).MinimumLength(11).WithMessage("Telefon alanı boş geçilelemez");
+            //RuleFor(x => x.Phone).MaximumLength(11).WithMessage("Telefon alanı boş geçilelemez");
+            //RuleFor(x => x.Phone).MinimumLength(11).WithMessage("Telefon alanı boş geçilelemez");
 
             RuleFor(x => x.Address).NotEmpty().WithMessage("Adres alanı boş geçilemez");
-            RuleFor(x => x.Address).MinimumLength(10).WithMessage("Adres alanı boş geçilemez");
+            //RuleFor(x => x.Address).MinimumLength(10).WithMessage("Adres alanı boş geçilemez");
 
         }
     }

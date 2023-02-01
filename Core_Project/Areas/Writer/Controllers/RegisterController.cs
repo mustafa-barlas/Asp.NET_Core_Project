@@ -1,5 +1,6 @@
 ﻿using Core_Project.Areas.Writer.Models;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 namespace Core_Project.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [AllowAnonymous]
     [Route("Writer/[controller]/[action]")]
     public class RegisterController : Controller
     {
@@ -35,6 +37,7 @@ namespace Core_Project.Areas.Writer.Controllers
                 Email = p.Mail,
                 UserName = p.UserName,
                 ImageUrl = p.ImageUrl
+               
             };
 
             if (p.Password == p.ConfirmPassword)

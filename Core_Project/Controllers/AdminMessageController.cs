@@ -16,14 +16,14 @@ namespace Core_Project.Controllers
         public IActionResult ReceiverMessageList()
         {
             string p;
-            p = "parasors@gmail.com";
+            p = "admin@gmail.com";
             var values = writerMessageManager.GetListReceiverMessage(p);
             return View(values);
         }
         public IActionResult SenderMessageList()
         {
             string p;
-            p = "parasors@gmail.com";
+            p = "admin@gmail.com";
             var values = writerMessageManager.GetListSenderMessage(p);
             return View(values);
         }
@@ -50,7 +50,7 @@ namespace Core_Project.Controllers
         [HttpPost]
         public IActionResult AdminMessageAdd(WriterMessage p)
         {
-            p.Sender = "parasors@gmail.com";
+            p.Sender = "admin@gmail.com";
             p.SenderName = "mustafa barlas";
             p.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
             Context context = new Context();

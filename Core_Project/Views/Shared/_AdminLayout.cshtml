@@ -1,8 +1,9 @@
-﻿
+﻿@{
+    Layout = null;
+}
 
 <!DOCTYPE html>
 <html>
-
 @await Html.PartialAsync("/Views/Admin/PartialHead.cshtml")
 <body>
     <!-- Sidenav -->
@@ -11,7 +12,7 @@
             <!-- Brand -->
             <div class="sidenav-header  align-items-center">
                 <a class="navbar-brand" href="javascript:void(0)">
-                    <img style="object-fit:cover" src="~/skydash/images/favicon-16x16.png" class="navbar-brand-img" alt="...">
+                    <img src="~/argon-dashboard-master/assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
                 </a>
             </div>
             @await Html.PartialAsync("/Views/Admin/PartialSideBar.cshtml")
@@ -31,20 +32,13 @@
                     @RenderBody()
                 </div>
             </div>
+            <br /><br />
             <!-- Footer -->
-            <br />
-         
-            <br />
-            <br />
-            <br />
-
-             @await Html.PartialAsync("/Views/Admin/PartialFooter.cshtml")
+            @await Html.PartialAsync("/Views/Admin/PartialFooter.cshtml")
         </div>
     </div>
     <!-- Argon Scripts -->
     <!-- Core -->
     @await Html.PartialAsync("/Views/Admin/PartialScript.cshtml")
 </body>
-
 </html>
-

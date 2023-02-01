@@ -4,50 +4,46 @@
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-@using (Html.BeginForm("EditAbout", "About", FormMethod.Post))
-{
+<form asp-action="EditAbout">
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-description">  Deneyim Düzenleme Paneli </p>
-                <form class="forms-sample">
+                <p class="card-description"> Hakımda Bölümü Düzenleme Paneli </p>
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" class="form-control" asp-for="@Model.AboutID">
+                </div>
+                <div class="form-group">
+                    <label>Ad Soyad</label>
+                    <input type="text" class="form-control" asp-for="@Model.Title">
+                </div>
+                <div class="form-group">
+                    <label>Yaş</label>
+                    <input type="text" class="form-control" asp-for="@Model.age">
+                </div>
+                <div class="form-group">
+                    <label>Mail</label>
+                    <input type="text" class="form-control" asp-for="@Model.Mail">
+                </div>
+                <div class="form-group">
+                    <label>Adres</label>
+                    <input type="text" class="form-control" asp-for="@Model.Address">
+                </div>
                     <div class="form-group">
-                        <label >ID</label>
-                        @Html.TextBoxFor(x => x.AboutID , new {@class ="form-control"})
-                    </div>
-                    <div class="form-group">
-                        <label >Başlık</label>
-                        @Html.TextBoxFor(x => x.Title , new {@class ="form-control"})
-
-                    </div>
-                    <div class="form-grou p">
-                        <label >Yaş</label>
-                        @Html.TextBoxFor(x => x.age , new {@class ="form-control"})
-                    </div>
-                    <div class="form-grou p">
-                        <label>Mail</label>
-                        @Html.TextBoxFor(x => x.Mail , new {@class ="form-control"})
-                    </div>
-                         <div class="form-grou p">
-                        <label>Adres</label>
-                        @Html.TextBoxFor(x => x.Address , new {@class ="form-control"})
-                    </div>
-                    <div class="form-grou p">
-                        <label>Telefon</label>
-                        @Html.TextBoxFor(x => x.Phone , new {@class ="form-control"})
-                    </div>                    
-                    <div class="form-grou p">
-                        <label>Görsel</label>  
-                        @Html.TextBoxFor(x => x.ImageUrl , new {@class ="form-control"})
-                    </div>
-                    <div class="form-group">
-                        <label >Açıklama</label>
-                        @Html.TextAreaFor(x => x.Description ,6,3, new {@class ="form-control"})
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
-                    <button class="btn btn-dark">   <a href="/About/Index/" style="text-decoration:none">Iptal</a>  </button>
-                </form>
+                    <label>Görsel</label>
+                    <input type="text" class="form-control" asp-for="@Model.ImageUrl">
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="text" class="form-control" asp-for="@Model.Phone">
+                </div>
+                <div class="form-group">
+                    <label>Açıklama</label>
+                    <textarea class="form-control" asp-for="@Model.Description" rows="6"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <button class="btn btn-dark">İptal</button>
             </div>
         </div>
     </div>
-}
+</form>

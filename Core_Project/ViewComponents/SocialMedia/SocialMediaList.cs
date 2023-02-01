@@ -6,12 +6,12 @@ namespace Core_Project.ViewComponents.SocialMedia
 {
     public class SocialMediaList : ViewComponent
     {
-        SocialMediaManager socialMediaManager = new SocialMediaManager(new EfSocialMediaDal());
-
+        SocialMediaManager socialMedia = new SocialMediaManager(new EfSocialMediaDal());
         public IViewComponentResult Invoke()
         {
-            var values = socialMediaManager.TGetList();
+            var values = socialMedia.TGetList();
             return View(values);
         }
     }
 }
+
