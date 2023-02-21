@@ -15,12 +15,12 @@
 
         <thead class="thead-light">
             <tr>
-                <th style="font-size:1rem" scope="col" class="sort" data-sort="name">#</th>
-                <th style="font-size:1rem" scope="col" class="sort" data-sort="budget">Başlık</th>
-                <th style="font-size:1rem" scope="col" class="sort" data-sort="status">Görsel</th>
-                <th style="font-size:1rem" scope="col">Sil</th>
-                <th style="font-size:1rem" scope="col" class="sort" data-sort="completion">Düzenle</th>
-                <th style="font-size:1rem" scope="col"></th>
+                <th>#</th>
+                <th>Görsel</th>
+                <th>Başlık</th>
+                <th>Sil</th>
+                <th>Düzenle</th>
+                <th></th>
             </tr>
         </thead>
         <tbody class="list">
@@ -28,15 +28,10 @@
             {
 
                 <tr>
-                    <th>
-                        @item.ServiceID
-                    </th>
-
-                    <th class="budget">
-                        @item.Title
-                    </th>
-
-
+                   
+                    <td>@item.ServiceID</td>
+                    <td> <img src="@item.ImageUrl" /> </td>
+                    <td>@item.Title</td>
                     <td> <a href="/Service/DeleteService/ @item.ServiceID" class="btn btn-danger">Sil</a></td>
 
                     <td> <a href="/Service/EditService/ @item.ServiceID" class="btn btn-success">Güncelle</a></td>

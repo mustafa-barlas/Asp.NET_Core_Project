@@ -9,6 +9,9 @@
 <form class="form-group" method="post">
     <br />
     @Html.Label("Alıcı Adı")
+    @Html.TextBoxFor(x => x.ReceiverName  , new { @class = "form-control"})
+    <br />
+    @Html.Label("Alıcı Mail")
     @Html.TextBoxFor(x => x.Receiver , new { @class = "form-control"})
     <br />
     @Html.Label("Konu")

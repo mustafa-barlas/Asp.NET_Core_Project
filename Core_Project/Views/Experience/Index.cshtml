@@ -11,10 +11,11 @@
             <h4 class="card-title">Deneyimler</h4>
 
             <div class="table-responsive">
-                <table class="table">
+                <table class="table ">
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Görsel</th>
                             <th>Deneyim</th>
                             <th>Tarih</th>
                             <th>Sil</th>
@@ -22,17 +23,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var item in Model)
+                        @foreach (var item in Model)
                         {
                             <tr>
                                 <td>@item.ExperienceID</td>
+                                <td> <img src="@item.ImageUrl" /> </td>
                                 <td>@item.Name</td>
                                 <td>@item.Date</td>
                                 <td><a href="/Experience/DeleteExperience/@item.ExperienceID" class="btn btn-outline-danger">Sil</a></td>
                                 <td><a href="/Experience/EditExperience/@item.ExperienceID" class="btn btn-outline-success">Güncelle</a></td>
                             </tr>
                         }
-                       
+
                     </tbody>
                 </table>
                 <a href="/Experience/AddExperience/" class="btn btn-outline-info">Yeni Deneyim Girişi</a>

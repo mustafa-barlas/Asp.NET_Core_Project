@@ -30,14 +30,14 @@
                                 <td>@item.Name</td>
                                 <td>@item.Mail</td>
                                 <td>@item.Date</td>
-                                <td><a href="/Experience/DeleteExperience/@item.MessageID" class="btn btn-outline-danger">Sil</a></td>
-                                <td><a href="/Experience/EditExperience/@item.MessageID" class="btn btn-outline-success">Mesajı Gör</a></td>
+                                <td><a href="/Contact/DeleteMessage/@item.MessageID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Contact/ContactDetails/@item.MessageID" class="btn btn-outline-success">Mesajı Gör</a></td>
                             </tr>
                         }
 
                     </tbody>
                 </table>
-                <a href="/Message/SendMessage" class="btn btn-outline-info"> Mesaj Yaz</a>
+                <a href="/AdminMessage/AdminMessageAdd" class="btn btn-outline-info"> Mesaj Yaz</a>
             </div>
         </div>
     </div>

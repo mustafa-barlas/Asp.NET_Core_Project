@@ -11,7 +11,7 @@ using System.Xml.Linq;
 namespace Core_Project.Areas.Writer.Controllers
 {
     [Area("Writer")]
-    [Authorize(Roles = "Moderator")]
+    [Authorize(Roles = "Writer")]
     public class DashboardController : Controller
     {
         private readonly UserManager<WriterUser> _userManager;

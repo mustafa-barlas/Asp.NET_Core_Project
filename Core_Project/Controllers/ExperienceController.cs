@@ -24,7 +24,7 @@ namespace Core_Project.Controllers
 
         [HttpGet]
         public IActionResult AddExperience()
-        {
+        { 
 
             return View();
         }

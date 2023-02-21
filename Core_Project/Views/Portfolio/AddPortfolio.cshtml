@@ -37,14 +37,14 @@
     @Html.ValidationMessageFor(x => x.Price  ,"", new { @style="color:red" })
 
     <br />
-    @Html.Label("Proje Adı")
+    @Html.Label("Platform")
     @Html.TextBoxFor(x => x.Platform, new {@class = "form-control",placeholder = " Platform Giriniz"})
     @Html.ValidationMessageFor(x => x.Platform  ,"", new { @style="color:red" })
 
     <br />
     @Html.Label("Ne kadar ilerlediniz")
     @Html.TextBoxFor(x => x.Value, new {@class = "form-control",placeholder = "Ne kadar ilerlediniz "})
-    @Html.ValidationMessageFor(x => x.Value  ,"", new { @style="color:red" })
+    @*@Html.ValidationMessageFor(x => x.Value  ,"", new { @style="color:red" })*@
 
     <br />
     <button class="btn btn-success">Kaydet</button>

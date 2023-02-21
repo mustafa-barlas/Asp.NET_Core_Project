@@ -15,31 +15,20 @@
                 <table class="table align-items-center table-dark table-flush">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col" class="sort" data-sort="name">Proje</th>
-                            <th scope="col" class="sort" data-sort="budget">Ücret</th>
-                            <th scope="col" class="sort" data-sort="status">Durum</th>
-                            <th scope="col" class="sort" data-sort="completion">Tamamlanma Oranı</th>
-                            <th scope="col" class="sort" data-sort="status">Sil</th>
-                            <th scope="col" class="sort" data-sort="status">Düzenle</th>
+                            <th>#</th>
+                            <th >Görsel</th>
+                            <th >Ücret</th>
+                            <th >Durum</th>
+                            <th >Tamamlanma Oranı</th>
+                            <th >Sil</th>
+                            <th >Düzenle</th>
 
                         </tr>
                     </thead>
                     <tbody class="list">
                         @foreach(var item in Model){
-                        <tr>
-                            <th scope="row">
-                                <div class="media align-items-center">
-                                    <a href="#" class="avatar rounded-circle mr-3">
-                                        <img alt="Image placeholder" src="@item.ImageUrl">
-                                    </a>
-                                    <div class="media-body">
-                                        <span class="name mb-0 text-sm">@item.Name</span>
-                                    </div>
-                                </div>
-                            </th>
-                            <td class="budget">
-                               @item.Price
-                            </td>
+@*                        <tr>
+
                                 <td>
                                     <span class="badge badge-dot mr-4" >
 
@@ -51,7 +40,7 @@
                                                     
 
                                             }
-                                            @if  (@item.Status == false)
+                                            @if  (@item.Status == false )
                                             {
                                                 <span style="color:red">Devam Ediyor    </span>
                                                
@@ -63,10 +52,19 @@
                            
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <span class="completion mr-2">@item.Value%</span>
+
+                                    <span class="completion mr-2">100</span>
                                     <div>
-                                        <div class="progress">
-                                                <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="@item.Value%" aria-valuemin="0" aria-valuemax="100" style="width: @item.Value%"></div>
+                                        @if (item.Status == true)
+                                            {
+                                                <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="100%" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                                                <span style="color:lawngreen">Tamamlandı   </span>
+                                            }
+                                          <div class="progress">
+                                                
+                                                
+                                                <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="@ViewBag.v1%" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                                                
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +72,37 @@
                                 <td><a href="/Portfolio/DeletePortfolio/@item.PortfolioID" class="btn btn-outline-danger">Sil</a></td>
                             <td><a href="/Portfolio/EditPortfolio/@item.PortfolioID " class="btn btn-outline-warning">Düzenle</a></td>
 
-                        </tr>
+                        </tr>*@
+
+
+                            <tr>
+                                <td>@item.PortfolioID</td>
+                                <td> <img src="@item.SmallImageUrl2" /> </td>
+                                <td>@item.Price</td>
+                                <td>
+                                    <div>
+                                        @if (@item.Value > 99)
+                                        {
+
+                                            <span style="color:lawngreen">Tamamlandı   </span>
+
+
+                                        }
+                                        @if (@item.Value < 100)
+                                        {
+                                            <span style="color:red">Devam Ediyor    </span>
+
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                 <div class="progress">
+                                 <div class="progress-bar" role="progressbar" style="width: @item.Value%;" aria-valuenow="@item.Value%" aria-valuemin="0" aria-valuemax="100">@item.Value%</div>
+                                 </div>
+                                </td>
+                                <td><a href="/Portfolio/DeletePortfolio/@item.PortfolioID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Portfolio/EditPortfolio/@item.PortfolioID " class="btn btn-outline-warning">Düzenle</a></td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -85,3 +113,14 @@
 </div>
 <br />
 <a href="/Portfolio/AddPortfolio/" class="btn btn-outline-primary">Yeni Proje Ekle</a>
+
+
+
+                              @*   <div class="media align-items-center">
+                                    <a href="#" class="avatar rounded-circle mr-3">
+                                        <img alt="Image placeholder" src="@item.ImageUrl">
+                                    </a>
+                                    <div class="media-body">
+                                        <span class="name mb-0 text-sm">@item.Name</span>
+                                    </div>
+                                </div>*@

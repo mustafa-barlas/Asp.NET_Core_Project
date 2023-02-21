@@ -22,6 +22,7 @@ namespace Core_Project.Areas.Writer.Controllers
         {
             _userManager = userManager;
         }
+
         [Route("")]
         [Route("ReceiverMessage")]
         public async Task<IActionResult> ReceiverMessage(string p)
@@ -31,6 +32,7 @@ namespace Core_Project.Areas.Writer.Controllers
             var messageList = writerMessageManager.GetListReceiverMessage(p);
             return View(messageList);
         }
+
         [Route("")]
         [Route("SenderMessage")]
         public async Task<IActionResult> SenderMessage(string p)
@@ -40,18 +42,21 @@ namespace Core_Project.Areas.Writer.Controllers
             var messageList = writerMessageManager.GetListSenderMessage(p);
             return View(messageList);
         }
-        [Route("MessageDetails/{id}")]
-        public IActionResult MessageDetails(int id)
+
+        [Route("SenderMessageDetails/{id}")]
+        public IActionResult SenderMessageDetails(int id)
         {
             WriterMessage writerMessage = writerMessageManager.TGetByID(id);
             return View(writerMessage);
         }
+
         [Route("ReceiverMessageDetails/{id}")]
         public IActionResult ReceiverMessageDetails(int id)
         {
             WriterMessage writerMessage = writerMessageManager.TGetByID(id);
             return View(writerMessage);
         }
+
         [HttpGet]
         [Route("")]
         [Route("SendMessage")]
@@ -76,6 +81,16 @@ namespace Core_Project.Areas.Writer.Controllers
             p.ReceiverName = usernamesurname;
             writerMessageManager.Tadd(p);
 
+            return RedirectToAction("SenderMessage");
+
+        }
+        [Route("Delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            WriterMessage writerMessage = writerMessageManager.TGetByID(id);
+            writerMessage.WriterMessageID = id;
+            writerMessageManager.Tdelete(writerMessage);
+            
             return RedirectToAction("SenderMessage");
 
         }

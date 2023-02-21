@@ -16,8 +16,13 @@
     @Html.Label("Gönderici Mail")
     @Html.TextBoxFor(x => x.Sender , new { @class = "form-control"})
     <br />
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x => x.Subject , new { @class = "form-control"})
+    <br />
     @Html.Label("Mesaj")
     @Html.TextAreaFor(x => x.MessageContent,10,3 , new { @class = "form-control"})
+    <br />
+    <button class="btn btn-inverse-dark"> <a href=" /Writer/Message/ReceiverMessage/" style="text-decoration:none">Geri Dön</a> </button>
 </form>
 
 

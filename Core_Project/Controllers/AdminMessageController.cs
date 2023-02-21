@@ -3,12 +3,15 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Data;
 using System.Linq;
 
 namespace Core_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminMessageController : Controller
     {
         WriterMessageManager writerMessageManager = new WriterMessageManager(new EfWriterMessageDal());
@@ -51,7 +54,7 @@ namespace Core_Project.Controllers
         public IActionResult AdminMessageAdd(WriterMessage p)
         {
             p.Sender = "admin@gmail.com";
-            p.SenderName = "mustafa barlas";
+            p.SenderName = "admin admin";
             p.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
             Context context = new Context();
             var userNameAndSurname = context.Users.Where(x => x.Email == p.Receiver).Select(y => y.Name +" "+ y.Surname).FirstOrDefault();

@@ -50,19 +50,7 @@
     @Html.TextBoxFor(x => x.Value, new {@class = "form-control"})
     @Html.ValidationMessageFor(x => x.Value  ,"", new { @style="color:red" })
     <br />
-    <div class="form-group">
-                        @Html.Label("Durum")
-                        <br />
-                        @Html.Label("Tamamlandı :   " )
-                        @Html.RadioButtonFor(x => x.Status, "True")
-                        <br />
-                        @Html.Label("devam ediyor  : ")
-                        @Html.RadioButtonFor(x => x.Status, "False")
-    </div>
-     
 
-
-    <br />
     <button class="btn btn-success">Güncelle</button>
                         </form>
                 </div>

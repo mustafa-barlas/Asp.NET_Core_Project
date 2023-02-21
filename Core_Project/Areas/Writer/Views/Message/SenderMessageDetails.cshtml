@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
 
+
 <h3>Mesaj Detayları</h3>
 
 <form class="form-group">
@@ -15,9 +16,17 @@
     @Html.Label("Alıcı Mail")
     @Html.TextBoxFor(x => x.Receiver , new { @class = "form-control"})
     <br />
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x => x.Subject , new { @class = "form-control"})
+    <br />
     @Html.Label("Mesaj")
     @Html.TextAreaFor(x => x.MessageContent,10,3 , new { @class = "form-control"})
+    <br />
+    <button class="btn btn-inverse-dark"> <a href=" /Writer/Message/SenderMessage/" style="text-decoration:none">Geri Dön</a> </button>
+
 </form>
+
+
 
 
 

@@ -2,10 +2,13 @@
 using Core_Project.Areas.Writer.Models;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
@@ -43,22 +46,20 @@ namespace Core_Project.Controllers
             return PartialView();
         }
 
-        [HttpGet]
-        public PartialViewResult SendMessage()
-        {
-            return PartialView();
-        }
 
         [HttpPost]
-        public PartialViewResult SendMessage(Message p)
+        public IActionResult SendMessage(Message p)
         {
             MessageManager messageManager = new MessageManager(new EfMessageDal());
 
+            
             p.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             p.Status = true;
 
             messageManager.Tadd(p);
-            return PartialView();
+            
+            var values = JsonConvert.SerializeObject(p);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -22,7 +22,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.Platform).NotEmpty().WithMessage("platform adı boş geçilemez");
             RuleFor(x => x.Platform).MinimumLength(3).WithMessage("platform adı en az 3 karakter olmalı");
 
-            RuleFor(x => x.Value).NotEmpty().WithMessage("Tamamlanma oranı boş geçilemez");
+            //RuleFor(x => x.Value).NotEmpty().WithMessage("Tamamlanma oranı boş geçilemez");
 
         }
     }
