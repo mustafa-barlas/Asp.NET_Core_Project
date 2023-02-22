@@ -12,10 +12,9 @@ namespace Core_Project.Controllers
     public class Experience2Controller : Controller
     {
         ExperienceManager experienceManager = new ExperienceManager(new EfExperienceDal());
-
         public IActionResult Index()
         {
-            return View();  
+            return View();
         }
         public IActionResult ListExperience()
         {
@@ -29,17 +28,24 @@ namespace Core_Project.Controllers
             var values = JsonConvert.SerializeObject(p);
             return Json(values);
         }
-        public IActionResult GetById(int ExperienceID)
+        public IActionResult GetById(int ExprerienceID)
         {
-            var v = experienceManager.TGetByID(ExperienceID);
+            var v = experienceManager.TGetByID(ExprerienceID);
             var values = JsonConvert.SerializeObject(v);
-            return Json(values);    
+            return Json(values);
         }
         public IActionResult DeleteExperience(int id)
         {
-            var values = experienceManager.TGetByID(id);
-            experienceManager.Tdelete(values);
+            var v = experienceManager.TGetByID(id);
+            experienceManager.Tdelete(v);
             return NoContent();
+        }
+        public IActionResult UpdateExperince(Experience p)
+        {
+            var v = experienceManager.TGetByID(p.ExperienceID);
+            experienceManager.Tupdate(v);
+            var values = JsonConvert.SerializeObject(p);
+            return Json(values);
         }
     }
 }

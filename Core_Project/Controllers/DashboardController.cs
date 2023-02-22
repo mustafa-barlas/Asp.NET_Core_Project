@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
@@ -9,7 +10,9 @@ namespace Core_Project.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
+ 
             return View();
         }
+      
     }
 }

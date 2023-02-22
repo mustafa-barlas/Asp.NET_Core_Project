@@ -7,54 +7,76 @@
 }
 
 
+<br />
 <div class="col-md-6">
     <div class="p-2">
         <button type="button" id="btngetlistall" class="btn btn-outline-primary">Verileri Getir</button>
-        <button type="button" id="btnadd" class="btn btn-outline-info">Kaydet</button>
-        <button type="button" id="btnid" class="btn btn-outline-warning">Id ile Getir</button>    
-        <button type="button" id="btndelete" class="btn btn-outline-danger">Sil</button>
-        <button type="button" id="btnupdate" class="btn btn-outline-success">Güncelle</button>
+      
+        <div class="p-2" id="listexperience">
+           
+        </div>
     </div>
 </div>
 
 <br />
-
-<div class="p-2" id="listexperience">
-
-</div>
-<br />
-<div class="col-md-12">
+<div class="col-md-6">
+    <div class="p-2">
+       
+        <button type="button" id="btnadd" class="btn btn-outline-info">Kaydet</button>
+        <div class="col-md-12">
     <h5>Ekleme Paneli</h5>
     <input type="text" class="form-control" id="inpname" placeholder="Başlık" />
-    <br />
-    <input type="text" class="form-control" id="inpdate" placeholder="Tarih" />
+    <br         />
+    <input         type="text" class="form-control" id="inpdate" placeholder="Tarih" />
 </div>
-<br />
-
-<div class="col-md-12">
-    <h5>Id'ye Göre Getirme Paneli</h5>
-    <input type="text" class="form-control" id="inpid" placeholder="ID Giriniz" />
+    </div>
 </div>
 
 <br />
-<div class="col-md-12">
-    <h5>Silme Paneli</h5>
-    <input type="text" class="form-control" id="inpexid" placeholder="ID Giriniz" />
-</div> 
+<div class="col-md-6">
+    <div class="p-2">
+
+        <button type="button" id="btnid" class="btn btn-outline-warning">Id ile Getir</button>
+        <div class="col-md-12">
+            <h5>Id'ye Göre Getirme Paneli</h5>
+            <input type="text" class="form-control" id="inpid" placeholder="ID Giriniz" />
+        </div>
+    </div>
+</div>
+
 
 <br />
-<div class="p-2" id="listbyidexperience">
-
+<div class="col-md-6">
+    <div class="p-2">
+       
+        <button type="button" id="btndelete" class="btn btn-outline-danger">Sil</button>
+        <div class="col-md-12">
+            <h5>Silme Paneli</h5>
+            <input type="text" class="form-control" id="inpexid" placeholder="ID Giriniz" />
+        </div>
+    </div>
 </div>
+
+
 <br />
 
-<div class="col-md-12">
-    <h5>Güncelleme Paneli</h5>
 
-    <input type="text" class="form-control" id="inpeditexpid" placeholder="ID Giriniz" />
-    <br />
-    <input type="text" class="form-control" id="inpeditexpname" placeholder="Tarih Giriniz" />
+<br />
+
+<div class="col-md-6">
+    <div class="p-2">
+        
+        <button type="button" id="btnupdate" class="btn btn-outline-success">Güncelle</button>
+        <div class="col-md-12">
+            <h5>Güncelleme Paneli</h5>
+
+            <input type="text" class="form-control" id="inpeditexpid" placeholder="ID Giriniz" />
+            <br />
+            <input type="text" class="form-control" id="inpeditexpname" placeholder="Tarih Giriniz" />
+        </div>
+    </div>
 </div>
+
 
 
 @section scripts
@@ -134,3 +156,9 @@
     }
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+
+
+
+
